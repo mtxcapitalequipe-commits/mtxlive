@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Encontro Semanal MTX Capital | Toda terça, 19h</title>
+<meta name="description" content="O encontro semanal dos investidores que enxergam além da bolsa. Você ao vivo com a MTX Capital, toda terça, às 19h." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FF5100;
+    --orange-2: #FF8A3D;
+    --black: #0A0A0A;
+    --black-2: #111;
+    --offwhite: #F5F3EE;
+    --cream: #F0EDE3;
+  }
+  html, body { font-family: 'Inter', sans-serif; color: #111; background: var(--offwhite); }
+  h1, h2, h3, h4 { font-family: 'DM Sans', sans-serif; letter-spacing: -0.02em; }
+  .text-orange { color: var(--orange); }
+
+  .eyebrow { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; }
+  .hero-h1 { font-size: clamp(48px, 7vw, 110px); line-height: 1; font-weight: 600; }
+  .section-h2 { font-size: clamp(36px, 5vw, 72px); line-height: 1.04; font-weight: 600; }
+
+  .italic-orange { font-style: italic; color: var(--orange); }
+
+  /* Hero */
+  .hero-bg {
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 60%, rgba(255,81,0,.18), transparent 70%),
+      var(--black);
+  }
+  .nav-pill {
+    border: 1px solid rgba(255,255,255,.18);
+    color: white; font-weight: 500;
+    padding: .55rem 1.4rem; border-radius: 999px;
+    transition: border-color .2s ease, background .2s ease;
+    background: rgba(255,255,255,.02);
+  }
+  .nav-pill:hover { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.06); }
+
+  /* CTAs */
+  .cta-orange {
+    background: var(--orange);
+    color: white; font-weight: 600;
+    padding: 1rem 2rem; border-radius: 999px;
+    display: inline-flex; align-items: center; gap: .6rem;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    box-shadow: 0 14px 32px -10px rgba(255,81,0,.5);
+  }
+  .cta-orange:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -10px rgba(255,81,0,.65); background: #FF6920; }
+  .cta-outline-light {
+    border: 1px solid rgba(0,0,0,.15); color: #111; font-weight: 600;
+    padding: 1rem 2rem; border-radius: 999px;
+    display: inline-flex; align-items: center; gap: .6rem;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .cta-outline-light:hover { border-color: rgba(0,0,0,.4); }
+
+  /* Encontro list */
+  .encontro-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    align-items: start;
+  }
+  .encontro-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(48px, 5vw, 72px);
+    font-weight: 600;
+    color: var(--orange);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  /* Bullets para "Para você, investidor" */
+  .bullet-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    align-items: start;
+  }
+  .bullet-dash {
+    color: var(--orange); font-weight: 600;
+    margin-top: .3rem; font-size: 1.5rem; line-height: 1;
+  }
+
+  /* Card MTX Capital embedded */
+  .mtx-card {
+    background: white;
+    border-left: 4px solid var(--orange);
+    border-radius: 4px;
+    padding: 3rem 3.5rem;
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,.15);
+  }
+  .mtx-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(40px, 4.5vw, 60px);
+    font-weight: 600;
+    color: var(--orange);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+  }
+
+  /* Form */
+  .field-underline {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,.2);
+    color: white;
+    padding: .75rem 0;
+    font-size: 16px;
+    width: 100%;
+    transition: border-color .2s ease;
+  }
+  .field-underline::placeholder { color: rgba(255,255,255,.3); }
+  .field-underline:focus { outline: none; border-bottom-color: var(--orange); }
+  .field-label {
+    color: var(--orange);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: .25rem;
+    display: block;
+  }
+  .quiz-q {
+    color: var(--orange); font-weight: 600;
+    letter-spacing: .04em;
+  }
+  .quiz-option {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.12);
+    color: white;
+    border-radius: 999px;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color .2s ease, background .2s ease;
+    width: 100%;
+    font-size: 14px;
+  }
+  .quiz-option:hover { border-color: rgba(255,81,0,.5); background: rgba(255,81,0,.04); }
+  .quiz-option.selected { border-color: var(--orange); background: rgba(255,81,0,.1); }
+
+  /* FAQ */
+  details summary::-webkit-details-marker { display: none; }
+  details summary { list-style: none; cursor: pointer; }
+  .faq-row {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+  }
+  .faq-icon {
+    width: 36px; height: 36px;
+    border-radius: 999px;
+    background: var(--orange);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; line-height: 1;
+    transition: transform .2s ease;
+    flex-shrink: 0;
+  }
+  details[open] .faq-icon { transform: rotate(45deg); }
+
+  /* Final CTA */
+  .final-cta-h2 { font-size: clamp(36px, 5vw, 72px); line-height: 1.05; font-weight: 600; }
+
+  input[type="text"], input[type="email"], input[type="tel"], textarea, select { font-family: 'Inter', sans-serif; }
+
+  .modal-bg { background: rgba(0,0,0,.85); backdrop-filter: blur(8px); }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- HERO -->
+<section id="topo" class="hero-bg text-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex items-center justify-between py-6">
+      <div class="font-semibold tracking-tight" style="font-family:'DM Sans',sans-serif;">MTX <span class="text-orange">Capital</span></div>
+      <a href="#inscricao" class="nav-pill text-sm">Inscrever</a>
+    </div>
+
+    <div class="text-center py-24 md:py-32">
+      <h1 class="hero-h1 mb-10 max-w-5xl mx-auto">
+        O encontro semanal dos investidores que enxergam <span class="italic-orange">além da bolsa</span>
+      </h1>
+      <p class="text-lg md:text-2xl text-neutral-300 max-w-3xl mx-auto mb-12 leading-relaxed">
+        Você ao vivo com a MTX Capital, toda terça, às 19h.
+      </p>
+      <a href="#inscricao" class="cta-orange">Quero me inscrever →</a>
+      <p class="mt-12 text-neutral-400 text-sm">
+        <strong class="text-white">+200M em receita gerada</strong> e <strong class="text-white">+150 mil clientes e parceiros</strong> na base MTX
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ENCONTRO ON-LINE -->
+<section class="bg-[var(--offwhite)]">
+  <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
+    <div class="text-center mb-16">
+      <h2 class="section-h2 mb-6 max-w-3xl mx-auto">Encontro on-line com especialistas</h2>
+      <p class="text-lg text-neutral-700">Toda semana, um novo tema para discutir as novidades do mercado.</p>
+    </div>
+
+    <div>
+      <div class="encontro-row">
+        <div class="encontro-num">01</div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-2">Abertura</h3>
+          <p class="text-neutral-700">Contexto da MTX, pauta da semana e como o encontro vai rodar.</p>
+        </div>
+      </div>
+      <div class="encontro-row">
+        <div class="encontro-num">02</div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-2">Análise de mercado</h3>
+          <p class="text-neutral-700">Três pontos macro da semana lidos com olhar de quem opera ativos reais.</p>
+        </div>
+      </div>
+      <div class="encontro-row">
+        <div class="encontro-num">03</div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-2">Ativo ou oferta em foco</h3>
+          <p class="text-neutral-700">Estudo do ativo da semana ou apresentação de uma oferta ativa, com tese, estrutura e cenários.</p>
+        </div>
+      </div>
+      <div class="encontro-row">
+        <div class="encontro-num">04</div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-2">Q&A ao vivo</h3>
+          <p class="text-neutral-700">Suas perguntas respondidas na hora, sem roteiro.</p>
+        </div>
+      </div>
+      <div class="encontro-row" style="border-bottom: 0;">
+        <div class="encontro-num">05</div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-2">Circle Spotlight</h3>
+          <p class="text-neutral-700">Novidades do Circle, próximas trilhas e séries da MTX.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA VOCÊ, INVESTIDOR -->
+<section class="bg-[var(--black)] text-white">
+  <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+      <div>
+        <span class="eyebrow text-orange">Para você, investidor</span>
+        <h2 class="section-h2 mt-6">Um encontro para quem estuda antes de <span class="italic-orange">alocar</span></h2>
+      </div>
+      <div>
+        <div class="bullet-item">
+          <span class="bullet-dash">—</span>
+          <p class="text-neutral-200 leading-relaxed">Você já investe e quer diversificar para fora da bolsa tradicional.</p>
+        </div>
+        <div class="bullet-item">
+          <span class="bullet-dash">—</span>
+          <p class="text-neutral-200 leading-relaxed">Você tem curiosidade real sobre tokenização e ativos reais.</p>
+        </div>
+        <div class="bullet-item">
+          <span class="bullet-dash">—</span>
+          <p class="text-neutral-200 leading-relaxed">Você busca renda recorrente com lastro em infraestrutura produtiva.</p>
+        </div>
+        <div class="bullet-item">
+          <span class="bullet-dash">—</span>
+          <p class="text-neutral-200 leading-relaxed">Você prefere entender a tese antes de alocar.</p>
+        </div>
+        <div class="bullet-item" style="border-bottom: 0;">
+          <span class="bullet-dash">—</span>
+          <p class="text-neutral-200 leading-relaxed">Você quer acompanhar as ofertas ativas da MTX em primeira mão.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- A MTX CAPITAL (card branco em cream) -->
+<section class="bg-[var(--offwhite)]">
+  <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="mtx-card">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <span class="eyebrow text-orange">Quem somos</span>
+          <h2 class="section-h2 mt-6 mb-10">A nova infraestrutura financeira da <span class="italic-orange">economia real</span></h2>
+          <div class="space-y-5 text-base text-neutral-700 leading-relaxed">
+            <p>A MTX Capital atua na estruturação e distribuição de ativos da economia real, conectando investidores a operações com lastro, previsibilidade e governança.</p>
+            <p>Nossa atuação vai além da intermediação: estruturamos operações desde a origem, analisando risco, definindo garantias e organizando a distribuição de forma eficiente.</p>
+            <p>Criamos acesso a ativos que antes estavam restritos, mantendo critérios técnicos, segurança jurídica e alinhamento com o investidor.</p>
+            <p>A próxima etapa é consolidar essa infraestrutura em escala, utilizando tecnologia para ampliar o acesso, reduzir fricções e transformar a forma como o capital se conecta com ativos produtivos.</p>
+          </div>
+        </div>
+
+        <div class="space-y-10 md:pl-6 md:border-l md:border-neutral-200">
+          <div class="md:pl-8">
+            <div class="mtx-num mb-2">+12 anos</div>
+            <p class="text-sm text-neutral-500">de mercado</p>
+          </div>
+          <div class="md:pl-8 pt-6 border-t border-neutral-200/60">
+            <div class="mtx-num mb-2">+200M</div>
+            <p class="text-sm text-neutral-500">de receita gerada</p>
+          </div>
+          <div class="md:pl-8 pt-6 border-t border-neutral-200/60">
+            <div class="mtx-num mb-2">+150 mil</div>
+            <p class="text-sm text-neutral-500">clientes e parceiros</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSCRIÇÃO (form) -->
+<section id="inscricao" class="bg-[var(--black)] text-white">
+  <div class="max-w-3xl mx-auto px-6 py-24 md:py-32">
+    <div class="text-center mb-12">
+      <span class="eyebrow text-orange">Inscrição</span>
+      <h2 class="section-h2 mt-6 mb-6">Confirme sua presença</h2>
+      <p class="text-lg text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+        Responda as perguntas abaixo para que a MTX possa preparar um encontro relevante para o seu momento como investidor.
+      </p>
+    </div>
+
+    <form onsubmit="event.preventDefault(); submitEncontro();" class="space-y-8">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <label class="field-label">Nome completo *</label>
+          <input type="text" required class="field-underline" placeholder="Como te chamamos?" />
+        </div>
+        <div>
+          <label class="field-label">E-mail *</label>
+          <input type="email" required class="field-underline" placeholder="seu@email.com" />
+        </div>
+      </div>
+
+      <div>
+        <label class="field-label">WhatsApp *</label>
+        <input type="tel" required class="field-underline" placeholder="(11) 99999 9999" />
+      </div>
+
+      <div class="pt-6">
+        <p class="quiz-q text-sm mb-4"><span class="text-neutral-500 mr-2">Q1</span>Você já investe hoje?</p>
+        <div class="grid md:grid-cols-2 gap-3">
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Só poupança e CDB</button>
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Ações e fundos imobiliários</button>
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Cripto e ativos alternativos</button>
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Carteira diversificada com vários tipos</button>
+        </div>
+      </div>
+
+      <div class="pt-6">
+        <p class="quiz-q text-sm mb-4"><span class="text-neutral-500 mr-2">Q2</span>Quanto você costuma alocar por oportunidade de investimento?</p>
+        <div class="grid md:grid-cols-2 gap-3">
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Até R$ 5 mil</button>
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">R$ 5 mil a R$ 25 mil</button>
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">R$ 25 mil a R$ 100 mil</button>
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Acima de R$ 100 mil</button>
+        </div>
+      </div>
+
+      <div class="pt-6">
+        <p class="quiz-q text-sm mb-4"><span class="text-neutral-500 mr-2">Q3</span>O que mais te interessa em tokenização de ativos reais?</p>
+        <div class="grid md:grid-cols-2 gap-3">
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Entender o que é antes de investir</button>
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Diversificar com ativos fora da bolsa</button>
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Buscar renda passiva recorrente</button>
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Exposição a energia renovável e ESG</button>
+        </div>
+      </div>
+
+      <div class="pt-6">
+        <p class="quiz-q text-sm mb-4"><span class="text-neutral-500 mr-2">Q4</span>Em quanto tempo você pretende tomar uma decisão de investimento?</p>
+        <div class="grid md:grid-cols-2 gap-3">
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Estou só estudando</button>
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Nos próximos 3 meses</button>
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Nos próximos 30 dias</button>
+          <button type="button" class="quiz-option" onclick="toggleQuiz(this)">Já estou pronto para investir</button>
+        </div>
+      </div>
+
+      <div class="pt-8 text-center">
+        <button type="submit" class="cta-orange">Confirmar inscrição</button>
+        <p class="text-xs text-neutral-500 mt-6 max-w-md mx-auto">
+          Seus dados são tratados conforme a LGPD e usados apenas para comunicação sobre os encontros da MTX Capital.
+        </p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-[var(--offwhite)]">
+  <div class="max-w-3xl mx-auto px-6 py-24 md:py-32">
+    <div class="text-center mb-16">
+      <span class="eyebrow text-orange">Perguntas frequentes</span>
+      <h2 class="section-h2 mt-6">Antes de se inscrever</h2>
+    </div>
+
+    <div>
+      <details class="faq-row">
+        <summary class="flex justify-between items-center">
+          <h3 class="text-lg font-semibold pr-6">O evento é gratuito?</h3>
+          <span class="faq-icon">+</span>
+        </summary>
+        <p class="text-neutral-700 mt-4 leading-relaxed pr-12">Sim. Os encontros semanais são gratuitos. A MTX disponibiliza o conteúdo como parte da relação com investidores e parceiros da tese de ativos reais.</p>
+      </details>
+      <details class="faq-row">
+        <summary class="flex justify-between items-center">
+          <h3 class="text-lg font-semibold pr-6">O encontro fica gravado?</h3>
+          <span class="faq-icon">+</span>
+        </summary>
+        <p class="text-neutral-700 mt-4 leading-relaxed pr-12">A experiência completa acontece apenas ao vivo, incluindo Q&A e as novidades do Circle. Inscritos podem receber recortes selecionados por e-mail. A gravação integral não é disponibilizada.</p>
+      </details>
+      <details class="faq-row">
+        <summary class="flex justify-between items-center">
+          <h3 class="text-lg font-semibold pr-6">Preciso ser investidor para participar?</h3>
+          <span class="faq-icon">+</span>
+        </summary>
+        <p class="text-neutral-700 mt-4 leading-relaxed pr-12">Não é obrigatório. A sala é aberta tanto para quem já investe quanto para quem está em fase de estudo. O requisito é o interesse genuíno em entender ativos reais.</p>
+      </details>
+      <details class="faq-row">
+        <summary class="flex justify-between items-center">
+          <h3 class="text-lg font-semibold pr-6">Como recebo o link de acesso?</h3>
+          <span class="faq-icon">+</span>
+        </summary>
+        <p class="text-neutral-700 mt-4 leading-relaxed pr-12">Após a inscrição, a confirmação chega por e-mail. O link de acesso é enviado por e-mail e WhatsApp algumas horas antes do encontro.</p>
+      </details>
+      <details class="faq-row">
+        <summary class="flex justify-between items-center">
+          <h3 class="text-lg font-semibold pr-6">Posso convidar alguém?</h3>
+          <span class="faq-icon">+</span>
+        </summary>
+        <p class="text-neutral-700 mt-4 leading-relaxed pr-12">Pode, desde que a pessoa faça a inscrição individualmente. Cada participante passa pelas perguntas de qualificação antes de receber o acesso.</p>
+      </details>
+      <details class="faq-row" style="border-bottom: 0;">
+        <summary class="flex justify-between items-center">
+          <h3 class="text-lg font-semibold pr-6">O que é o Circle?</h3>
+          <span class="faq-icon">+</span>
+        </summary>
+        <p class="text-neutral-700 mt-4 leading-relaxed pr-12">O Circle é a comunidade de investidores da MTX, com trilhas formativas e conteúdos aprofundados. Cada terça apresentamos uma novidade do Circle ao final do encontro.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="bg-[var(--black)] text-white">
+  <div class="max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
+    <h2 class="final-cta-h2 mb-12">Garanta sua vaga na próxima <span class="italic-orange">terça</span></h2>
+    <a href="#inscricao" class="cta-orange">Quero me inscrever →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[var(--black)] text-white border-t border-white/5">
+  <div class="max-w-6xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-3 gap-10 mb-12">
+      <div>
+        <div class="font-semibold tracking-tight mb-4 text-lg" style="font-family:'DM Sans',sans-serif;">MTX <span class="text-orange">Capital</span></div>
+        <p class="text-neutral-400 text-sm max-w-xs">A nova infraestrutura financeira da economia real.</p>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold mb-4">Institucional</h4>
+        <ul class="space-y-2 text-sm text-neutral-400">
+          <li><a href="#" class="hover:text-orange">Sobre a MTX</a></li>
+          <li><a href="#" class="hover:text-orange">Projetos</a></li>
+          <li><a href="#" class="hover:text-orange">Parcerias</a></li>
+          <li><a href="#" class="hover:text-orange">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold mb-4">Acompanhe</h4>
+        <ul class="space-y-2 text-sm text-neutral-400">
+          <li><a href="#" class="hover:text-orange">Instagram</a></li>
+          <li><a href="#" class="hover:text-orange">LinkedIn</a></li>
+          <li><a href="#" class="hover:text-orange">YouTube</a></li>
+          <li><a href="#" class="hover:text-orange">Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/5 pt-6 text-xs text-neutral-500 leading-relaxed mb-4">
+      <p>Conteúdo com caráter informativo e educacional. Não constitui recomendação, oferta ou solicitação de investimento. Rentabilidades passadas não garantem resultados futuros. Todo investimento envolve riscos. As ofertas apresentadas nos encontros seguem a regulamentação vigente da CVM e demais órgãos competentes.</p>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between text-xs text-neutral-600 gap-2">
+      <span>© 2026 MTX Capital. Todos os direitos reservados.</span>
+      <span>contato@mtxcapital.com.br</span>
+    </div>
+  </div>
+</footer>
+
+<!-- SUCCESS MODAL -->
+<div id="encontro-success" class="fixed inset-0 hidden items-center justify-center modal-bg z-50 p-4">
+  <div class="rounded-2xl max-w-md w-full p-8 text-center" style="background: var(--black-2); border: 1px solid rgba(255,81,0,.3);">
+    <div class="text-orange text-5xl mb-4">✓</div>
+    <h3 class="text-2xl font-semibold mb-3 text-white" style="font-family:'DM Sans',sans-serif;">Inscrição confirmada.</h3>
+    <p class="text-neutral-400 mb-6">Você recebe o link de acesso por e-mail e WhatsApp algumas horas antes do encontro.</p>
+    <button onclick="closeEncontroSuccess()" class="cta-orange">Fechar</button>
+  </div>
+</div>
+
+<script>
+  function toggleQuiz(btn){
+    const group = btn.parentElement;
+    group.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+  function submitEncontro(){
+    const m = document.getElementById('encontro-success');
+    m.classList.remove('hidden'); m.classList.add('flex');
+  }
+  function closeEncontroSuccess(){
+    const m = document.getElementById('encontro-success');
+    m.classList.add('hidden'); m.classList.remove('flex');
+  }
+</script>
+</body>
+</html>
